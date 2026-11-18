@@ -235,7 +235,7 @@ p { margin: 0 0 1em; }
 .video figcaption { margin-top: 0.6rem; }
 /* Click-to-load video placeholder: local photo, play button, privacy note */
 .video-consent { display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.video-consent .video-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
+.video-consent .video-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.82); }
 .video-play {
   position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 0.6em;
   background: var(--black); color: var(--white); border: 0; border-radius: 999px;
