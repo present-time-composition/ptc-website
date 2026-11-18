@@ -415,6 +415,7 @@ body.lb-open { overflow: hidden; }
   font-size: 0.875rem;
 }
 .footer-bottom .credits { color: #6b6b67; }
+.footer-bottom .credits a { color: inherit; }
 
 /* Mobile */
 @media (max-width: 760px) {
