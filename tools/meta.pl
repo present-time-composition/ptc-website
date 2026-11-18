@@ -8,7 +8,7 @@ binmode STDOUT, ':utf8';
 my $BASE = 'https://present-time-composition.github.io/ptc-website/';
 
 my %pages = (
-  ''                                    => ['home',         'Present-Time Composition (PTC) is an approach to improvisation that develops the sensibilities needed to create meaningful forms together in the present moment, in music, dance and beyond.'],
+  ''                                    => ['home',         'Present-Time Composition (PTC) is a method of improvisation and a registered trademark. By attending closely to inner impulses, improvisers learn to act in the moment together, creating meaningful musical content and form.'],
   'about-ptc/'                          => ['about-ptc',    'What Present-Time Composition (PTC) is, how it works, and how Alan Bern began developing it in 2005.'],
   'testimonies/'                        => ['testimonies',  'Musicians and artists describe what Present-Time Composition (PTC) has meant for their work.'],
   'deep-dive/'                          => ['deep-dive',    'An archive of texts, videos and recordings about Present-Time Composition (PTC).'],
