@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>contact — present-time composition</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <div class="page-hero">
+  <img class="hero-bg" src="../images/contact.jpg" alt="">
+  <header class="site-header has-toggle">
+    <a class="site-title" href="../">present-time composition</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav">
+      <a href="../past/">past</a>
+      <a href="../future/">future</a>
+      <div class="nav-item">
+        <button class="sub-toggle current" type="button" aria-expanded="false" aria-controls="about-sub">about</button>
+        <div class="submenu" id="about-sub">
+          <a href="../about-ptc/">about PTC</a>
+          <a href="../testimonies/">testimonies</a>
+          <a href="../deep-dive/">deep-dive</a>
+          <a href="./" aria-current="page">contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="hero-title"><h1>Contact</h1></div>
+  </div>
+
+  <main>
+    <section class="contact-band contact-page">
+      <div class="intro">
+        <h2>Get in touch with us</h2>
+        <p>Interested in learning more about PTC, participating in a workshop, or exploring possibilities for collaboration? We’d love to hear from you. Send us a message using the contact form, and we’ll get back to you as soon as possible.</p>
+      </div>
+      <!-- Sends the message straight from the page through Web3Forms (GitHub Pages can't send email itself).
+           To connect it: get a free access key at https://web3forms.com using the PTC email address,
+           then replace YOUR_ACCESS_KEY below. Messages then arrive in that inbox. -->
+      <form class="contact-form" data-endpoint="https://api.web3forms.com/submit" data-key="YOUR_ACCESS_KEY">
+        <input class="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div>
+          <label for="first">First name <span class="req">(required)</span></label>
+          <input id="first" name="first" type="text" autocomplete="given-name" required>
+        </div>
+        <div>
+          <label for="last">Last name <span class="req">(required)</span></label>
+          <input id="last" name="last" type="text" autocomplete="family-name" required>
+        </div>
+        <div class="full">
+          <label for="email">Email address <span class="req">(required)</span></label>
+          <input id="email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="full">
+          <label for="message">Message <span class="req">(required)</span></label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button class="button" type="submit">Send</button>
+        <p class="form-note" role="status"></p>
+        <p class="form-privacy">Your details are only used to answer your message. More in our <a href="../datenschutz/">privacy policy</a>.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <span>present-time composition</span>
+      <a href="mailto:contact@present-time-composition.eu">contact@present-time-composition.eu</a>
+    </div>
+    <div class="footer-bottom">
+      <span class="legal-links"><a href="../impressum/">Impressum</a> · <a href="../datenschutz/">Datenschutz</a></span>
+      <span class="credits">Photos: Jakob Jurkosek, Andreas Welskop</span>
+      <span>© 2026 present-time composition. All rights reserved.</span>
+    </div>
+  </footer>
+  <script src="../assets/menu.js"></script>
+  <script src="../assets/contact.js"></script></body>
+</html>

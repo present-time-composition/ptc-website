@@ -1,0 +1,6 @@
+# Only the website (docs/) goes to GitHub.
+# Original photos, materials (2.9 GB), texts and work files stay on this computer.
+/*
+!/docs/
+!/.gitignore
+!/README.md

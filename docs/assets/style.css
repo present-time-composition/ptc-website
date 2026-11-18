@@ -1,0 +1,421 @@
+@font-face { font-family: "Manrope"; src: url("fonts/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "Nunito Sans"; src: url("fonts/nunito-sans.woff2") format("woff2"); font-weight: 200 1000; font-display: swap; }
+@font-face { font-family: "Nunito Sans"; src: url("fonts/nunito-sans-italic.woff2") format("woff2"); font-weight: 200 1000; font-style: italic; font-display: swap; }
+
+:root {
+  --bg: #f4f4f3;
+  --white: #ffffff;
+  --yellow: #eedfb3; /* pale yellow from the cream shirt in photo #28 */
+  --dark: #383838;
+  --black: #000000;
+  --gutter: 4vw;
+  --heading: "Manrope", "Helvetica Neue", Arial, sans-serif;
+  --body: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--black);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+
+.photo { width: 100%; height: 100%; object-fit: cover; background: #dcdcd8; }
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.75rem var(--gutter);
+}
+.site-title {
+  font-family: var(--heading);
+  font-weight: 400;
+  font-size: clamp(1.2rem, 0.9rem + 0.6vw, 1.6rem);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem 1.75rem; }
+.site-nav a {
+  font-size: 1.05rem;
+  text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: 1px solid transparent;
+}
+.site-nav a:hover, .site-nav a[aria-current="page"] { border-bottom-color: currentColor; }
+.menu-toggle { display: none; }
+
+/* "about" dropdown */
+.nav-item { position: relative; }
+.sub-toggle {
+  background: none; border: 0; padding: 0 0 1px; margin: 0;
+  font: inherit; font-size: 1.05rem; color: inherit; cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+.sub-toggle::after {
+  content: ""; display: inline-block; width: 0.38em; height: 0.38em; margin-left: 0.45em;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.25em) rotate(45deg); transition: transform 0.15s;
+}
+.sub-toggle:hover { border-bottom-color: currentColor; }
+.nav-item.open .sub-toggle::after { transform: translateY(0) rotate(-135deg); }
+.submenu {
+  display: none;
+  position: absolute; top: calc(100% + 0.75rem); left: -1.25rem; z-index: 10;
+  min-width: 11rem; padding: 0.9rem 1.25rem;
+  background: var(--dark); color: var(--white);
+  flex-direction: column; gap: 0.6rem;
+}
+.nav-item.open .submenu { display: flex; }
+/* When "about" is the last menu item, open the dropdown leftwards so it stays on screen */
+.nav-item:last-child .submenu { left: auto; right: -1.25rem; }
+
+/* Sections */
+.section { padding: 0 var(--gutter) clamp(3rem, 7vw, 6rem); }
+.hero-image { aspect-ratio: 16 / 8; overflow: hidden; }
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4.5vw;
+  align-items: stretch;
+}
+/* Photo stretches to the full height of the text column beside it */
+.split .media { position: relative; overflow: hidden; min-height: 100%; }
+.split .media .photo { position: absolute; inset: 0; }.split .text { padding-right: 8vw; }
+
+/* Photo on the right on desktop (it stays above the text on phones) */
+.split.media-right .media { order: 2; }
+/* Photo at least portrait-shaped, even when the text beside it is short */
+/* Text and photos fill their whole column, so the page spans the header's width;
+   all photos share one shape */
+.split.tall .text { padding-right: 0; }
+.split.tall .media {
+  min-height: 0;
+  width: 100%;
+  aspect-ratio: 5 / 6;
+  align-self: start;
+}/* Breathing room between the header and a page that opens with text + photo */
+main > .split:first-child { padding-top: clamp(2rem, 5vw, 4.5rem); }
+.home-top + main > .split:first-child { padding-top: 0; }   /* home: the photo above already gives the space */
+
+/* Whole photo at its own 2:3 shape, same height as the others, so narrower (cellist) */
+.split.tall .media.full-photo { width: 80%; aspect-ratio: 2 / 3; }
+
+/* Text-only section: heading on the left, text on the right (same columns as the photo sections) */
+.text-section { display: grid; grid-template-columns: 1fr 1fr; column-gap: 4.5vw; align-items: start; }
+.text-section h2 { margin: 0; }
+.text-section h3 { font-family: var(--heading); font-weight: 400; font-size: 1.3rem; letter-spacing: -0.01em; margin: 0 0 0.6em; }
+
+.text blockquote {
+  margin: 0 0 1em 2.5rem;
+  font-style: italic;
+}
+
+h1, h2 {
+  font-family: var(--heading);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin: 0 0 1.4em;
+}
+h1 { font-size: clamp(2rem, 1rem + 2.4vw, 3.4rem); }
+h2 { font-size: clamp(1.7rem, 0.9rem + 2vw, 2.9rem); }
+h1 + p, h2 + p { margin-top: 0; }
+
+.justify p { text-align: justify; hyphens: auto; }
+p { margin: 0 0 1em; }
+
+/* Pill buttons */
+.button {
+  display: inline-block;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--body);
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.25em 3.4em;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+}
+.button:hover { background: var(--dark); }
+.button-row { text-align: center; margin-top: 2.5rem; }
+.button-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+.button-group .button { flex: 1 1 0; min-width: 9.5rem; text-align: center; padding-left: 1.5em; padding-right: 1.5em; }
+
+/* Full-width photo behind the header, with the page title on top (testimonies, future) */
+.page-hero {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+  background: var(--dark);
+  overflow: hidden;
+}
+.page-hero .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.page-hero::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.3); }
+.page-hero > .site-header, .page-hero > .hero-title { position: relative; z-index: 1; }
+/* Header above the title layer, so the dropdown can be clicked */
+.page-hero > .site-header { z-index: 2; }
+.page-hero .site-header a, .page-hero .menu-toggle, .page-hero .sub-toggle { color: var(--white); }
+.hero-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 var(--gutter) 4rem;
+}
+.hero-title h1 { margin: 0; text-align: right; }
+
+/* Testimonies: name on the left, words on the right, same columns as the about page */
+.testimonies { padding: clamp(2.5rem, 6vw, 5rem) var(--gutter) clamp(3rem, 7vw, 6rem); }
+.testimonies .testimony:first-child { border-top: 0; padding-top: 0; }
+.testimony {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4.5vw;
+  border-top: 1px solid #cfcfcb;
+  padding: clamp(1.75rem, 3.5vw, 3rem) 0;
+}
+.testimony h2 { font-size: clamp(1.5rem, 1rem + 1.2vw, 2.2rem); margin: 0; }
+.testimony blockquote { margin: 0; }
+.testimony blockquote p:last-child { margin-bottom: 0; }
+
+/* Deep-dive archive: group name on the left, items on the right (same columns as other pages) */
+.archive { padding: clamp(2rem, 5vw, 4.5rem) var(--gutter) clamp(3rem, 7vw, 6rem); }
+.archive .archive-group:first-child { border-top: 0; padding-top: 0; }
+.archive-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4.5vw;
+  border-top: 1px solid #cfcfcb;
+  padding: clamp(1.75rem, 3.5vw, 3rem) 0;
+}
+.archive-group h2 { font-size: clamp(1.5rem, 1rem + 1.2vw, 2.2rem); margin: 0 0 1rem; }
+.archive-list { list-style: none; margin: 0; padding: 0; }
+.archive-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #e0e0dc;
+}
+.archive-item:first-child { padding-top: 0; }
+.archive h3 { font-family: var(--heading); font-weight: 400; font-size: 1.15rem; letter-spacing: -0.01em; line-height: 1.3; margin: 0 0 0.2rem; }
+.meta { font-size: 0.875rem; color: #6b6b67; margin: 0; }
+.archive-link {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--black);
+  border-radius: 999px;
+  padding: 0.45em 1.4em;
+}
+.archive-link:hover { background: var(--black); color: var(--white); }
+.audio-item { flex-wrap: wrap; }
+.audio-item audio { width: 100%; max-width: 22rem; }
+.video-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.video { margin: 0; }
+.video-frame { position: relative; aspect-ratio: 16 / 9; background: var(--dark); }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video figcaption { margin-top: 0.6rem; }
+.lab-videos { margin-top: 2rem; border-top: 1px solid #e0e0dc; padding-top: 1rem; }
+.lab-videos summary { cursor: pointer; font-family: var(--heading); font-size: 1.15rem; }
+.lab-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: 1.25rem; margin-top: 1rem; }
+.lab-day h4 { font-family: var(--body); font-weight: 600; font-size: 0.9rem; margin: 0 0 0.4rem; }
+.lab-day ol { margin: 0; padding-left: 1.4rem; font-size: 0.9rem; line-height: 1.7; }
+
+/* Past: 2 x 2 grid of projects, same columns as the other pages */
+.projects { padding: clamp(2rem, 5vw, 4.5rem) var(--gutter) clamp(3rem, 7vw, 6rem); }
+.projects h1 { margin-bottom: 0.9em; }
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 4.5vw; row-gap: clamp(2.5rem, 5vw, 4.5rem); }
+.project-photo { aspect-ratio: 4 / 3; overflow: hidden; }
+.project h2 { font-size: clamp(1.4rem, 1rem + 1vw, 2rem); margin: 1rem 0 0; }
+
+.project a { text-decoration: none; display: block; }
+.project a:hover h2 { text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+.project a:hover .photo { opacity: 0.92; }
+
+/* Project pages */
+.back { margin: 0 0 1.5rem; font-size: 0.95rem; }
+.back a { text-decoration: none; }
+.back a:hover { text-decoration: underline; }
+.project-page h1 { margin-bottom: 0.3em; }
+.lead-meta { color: #6b6b67; margin: 0 0 clamp(2rem, 4vw, 3.5rem); }
+.project-page .archive-group:first-of-type { border-top: 1px solid #cfcfcb; }
+
+/* Future: list of events (date, details, link) */
+.event-list { list-style: none; margin: 0; padding: 0; }
+.event {
+  display: grid;
+  grid-template-columns: 9rem 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #e0e0dc;
+}
+.event:first-child { padding-top: 0; }
+.event-date { margin: 0; font-size: 0.9rem; line-height: 1.45; }
+.event p { margin: 0.35rem 0 0; }
+.event .meta { margin-top: 0; }
+.no-events { margin: 0; }
+.event-list:not(:empty) + .no-events { display: none; }
+
+/* Event pages */
+.apply-row { margin: 0 0 clamp(2rem, 4vw, 3.5rem); }
+.apply-end .apply-row { margin: 2rem 0 0; }
+.lead-meta + .apply-row { margin-top: calc(-1 * clamp(1rem, 2vw, 2rem)); }
+.event-page .text p:last-child { margin-bottom: 0; }
+.schedule { border-collapse: collapse; width: 100%; margin-bottom: 0.75rem; }
+.schedule td { padding: 0.55rem 0; border-bottom: 1px solid #e0e0dc; vertical-align: top; }
+.schedule td:first-child { width: 9rem; white-space: nowrap; }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.55rem 1.5rem; margin: 0; }
+.facts dt { color: #6b6b67; }
+.facts dd { margin: 0; }
+
+/* Impressum: German heading with the English one underneath, smaller and grey */
+.legal h2 { font-size: clamp(1.2rem, 0.9rem + 0.8vw, 1.6rem); }
+.lang-en { display: block; font-size: 0.6em; color: #6b6b67; margin-top: 0.35em; }
+.legal h1 .lang-en { display: inline; font-size: 0.55em; }
+.legal .text p.en { color: #6b6b67; font-size: 0.925rem; }
+.legal .text a { text-underline-offset: 0.15em; }
+/* Details still missing: clearly marked so they're not published by accident */
+.placeholder { background: #fff3c4; outline: 1px dashed #b8a24a; padding: 0 0.3em; }
+
+/* Names linking to people's websites: quiet underline that strengthens on hover */
+.person-link, .meta a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: #b5b5b0; }
+.person-link:hover, .meta a:hover { text-decoration-color: currentColor; }
+
+/* Current section in the menu */
+.site-nav a.current { border-bottom-color: currentColor; }
+.sub-toggle.current { border-bottom-color: currentColor; }
+
+/* Yellow contact section */
+.contact-band {
+  background: var(--yellow);
+  padding: clamp(3rem, 7vw, 6rem) var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 4.5vw;
+}
+.contact-band .intro { padding-right: 8vw; }
+.contact-band h1, .contact-band h2 { margin-bottom: 0.9em; }.contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 0.9rem; }
+.contact-form .full { grid-column: 1 / -1; }
+.contact-form label { display: block; margin-bottom: 0.4rem; }
+.contact-form .req { color: #6b6250; }
+.contact-form .botcheck { display: none; }
+.form-privacy { grid-column: 1 / -1; font-size: 0.8rem; color: #6b6250; margin: 0; }.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--black);
+  border-radius: 999px;
+  padding: 0.8rem 1.2rem;
+}
+.contact-form textarea { border-radius: 1.4rem; min-height: 8rem; resize: vertical; }
+.contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--black); outline-offset: 1px; }
+.contact-form .button { color: var(--yellow); justify-self: start; }
+.form-note { grid-column: 1 / -1; font-size: 0.875rem; margin: 0; min-height: 1.3em; }
+
+/* Footer */
+.site-footer { padding: clamp(2.5rem, 5vw, 4rem) var(--gutter) 1.75rem; }
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  font-family: var(--heading);
+  font-size: clamp(1.3rem, 0.9rem + 1.1vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.footer-top a { text-decoration: none; }
+.footer-top a:hover { text-decoration: underline; }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  font-size: 0.875rem;
+}
+.footer-bottom .credits { color: #6b6b67; }
+
+/* Mobile */
+@media (max-width: 760px) {
+  .split { grid-template-columns: 1fr; row-gap: 2rem; }
+  .split .media { aspect-ratio: 4 / 5; }
+  .split .media, .split.media-right .media { order: 2; }   /* photos come after their text on phones */
+  .split.tall .media,
+  .split.tall .media.full-photo { width: 100%; aspect-ratio: 4 / 5; }   /* cellist same size as the others */
+  .testimony { grid-template-columns: 1fr; row-gap: 1rem; }
+  .text-section { grid-template-columns: 1fr; row-gap: 1.25rem; }
+  .archive-group { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
+  .event { grid-template-columns: 1fr; gap: 0.5rem; }
+  .audio-item { flex-wrap: wrap; }   /* READ buttons stay on the right of their titles */
+  /* Fixed banner height on phones, so opening the menu doesn't make the photo grow */
+  .page-hero { min-height: 0; height: max(60vh, 28rem); }
+
+  /* 1. Left-aligned text on phones (justified text leaves big gaps on narrow screens) */
+  .justify p { text-align: left; hyphens: auto; -webkit-hyphens: auto; }
+
+  /* 2. Tighter spacing between sections */
+  .section { padding-bottom: 3rem; }
+  .split { row-gap: 1.5rem; }
+  main > .split:first-child { padding-top: 2rem; }
+  .testimonies, .archive, .projects { padding-top: 2rem; padding-bottom: 3rem; }
+  .testimony, .archive-group { padding: 1.75rem 0; }
+  .project-grid { row-gap: 2.25rem; }
+  .site-footer { padding-top: 2.5rem; }
+  .footer-bottom { margin-top: 2rem; }
+  h1 + p, h2 + p { margin-top: 0; }
+  h1, h2 { margin-bottom: 0.8em; }
+
+  /* 4. Banner titles sit at the bottom of the photo, clear of faces */
+  .hero-title { align-items: flex-end; padding-bottom: 1.75rem; }
+  .contact-band { grid-template-columns: 1fr; row-gap: 2rem; }
+  .contact-band .intro { padding-right: 0; }
+  .contact-form { grid-template-columns: 1fr; }
+  .split .text { padding-right: 0; }
+  .hero-image { aspect-ratio: 4 / 3; }
+  .site-header { flex-wrap: wrap; }
+  .site-nav { gap: 0.5rem 1.25rem; }
+  /* Full menu collapses behind a Menu button */
+  .has-toggle .menu-toggle {
+    display: block;
+    background: none; border: 0; padding: 0;
+    font: inherit; font-size: 1.05rem; color: inherit; cursor: pointer;
+    text-decoration: underline;
+  }
+  .has-toggle .site-nav { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .has-toggle.open .site-nav { display: flex; }
+  /* About submenu on phones: a plain list indented under "about", same colours as the menu */
+  .submenu { position: static; margin-top: 0.75rem; padding: 0 0 0 1.25rem; min-width: 0; background: none; color: inherit; gap: 0.75rem; }
+
+  /* Home page on phones: the first photo becomes a full-width banner behind the header, like the other pages */
+  .home-top { position: relative; height: max(60vh, 28rem); display: flex; flex-direction: column; background: var(--dark); color: var(--white); overflow: hidden; }
+  .home-top > .section { position: absolute; inset: 0; padding: 0; }
+  .home-top .hero-image { aspect-ratio: auto; height: 100%; }
+  .home-top::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.3); z-index: 1; }
+  .home-top > .site-header { position: relative; z-index: 2; }
+  .home-top .site-header a, .home-top .menu-toggle, .home-top .sub-toggle { color: var(--white); }
+  .home-top + main > .split:first-child { padding-top: 2rem; }
+}
