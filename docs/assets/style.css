@@ -233,6 +233,21 @@ p { margin: 0 0 1em; }
 .video-frame { position: relative; aspect-ratio: 16 / 9; background: var(--dark); }
 .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video figcaption { margin-top: 0.6rem; }
+/* Click-to-load video placeholder: local photo, play button, privacy note */
+.video-consent { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.video-consent .video-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
+.video-play {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 0.6em;
+  background: var(--black); color: var(--white); border: 0; border-radius: 999px;
+  padding: 0.85em 1.6em; font: inherit; font-size: 0.95rem; text-transform: uppercase; cursor: pointer;
+}
+.video-play:hover { background: var(--dark); }
+.play-icon { width: 0; height: 0; border-left: 0.7em solid currentColor; border-top: 0.42em solid transparent; border-bottom: 0.42em solid transparent; }
+.video-note {
+  position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; margin: 0; padding: 0.5rem 0.9rem;
+  font-size: 0.75rem; color: var(--white); background: rgba(0, 0, 0, 0.45);
+}
+.video-note a { color: inherit; }
 .lab-videos { margin-top: 2rem; border-top: 1px solid #e0e0dc; padding-top: 1rem; }
 .lab-videos summary { cursor: pointer; font-family: var(--heading); font-size: 1.15rem; }
 .lab-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: 1.25rem; margin-top: 1rem; }
