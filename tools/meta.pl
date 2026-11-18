@@ -44,9 +44,9 @@ for my $rel (sort keys %pages) {
     '  <meta property="og:image:width" content="1200">',
     '  <meta property="og:image:height" content="630">',
     '  <meta name="twitter:card" content="summary_large_image">',
-    '  <link rel="icon" href="' . $up . 'favicon.svg" type="image/svg+xml">',
-    '  <link rel="icon" href="' . $up . 'favicon-32.png" sizes="32x32" type="image/png">',
-    '  <link rel="apple-touch-icon" href="' . $up . 'apple-touch-icon.png">',
+    '  <link rel="icon" href="' . $up . 'favicon-32.png?v=2" sizes="32x32" type="image/png">',
+    '  <link rel="icon" href="' . $up . 'favicon-192.png?v=2" sizes="192x192" type="image/png">',
+    '  <link rel="apple-touch-icon" href="' . $up . 'apple-touch-icon.png?v=2">',
     '  <!-- meta:end -->';
   $html =~ s{\n  <!-- meta:start.*?<!-- meta:end -->}{}s;   # replace an earlier block
   $html =~ s{(</title>)}{$1\n$block};
