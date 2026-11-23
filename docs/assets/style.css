@@ -132,7 +132,7 @@ h1 { font-size: clamp(2rem, 1rem + 2.4vw, 3.4rem); }
 h2 { font-size: clamp(1.7rem, 0.9rem + 2vw, 2.9rem); }
 h1 + p, h2 + p { margin-top: 0; }
 
-.justify p { text-align: justify; hyphens: auto; }
+.justify p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 p { margin: 0 0 1em; }
 
 /* Pill buttons */
@@ -257,6 +257,10 @@ p { margin: 0 0 1em; }
 /* Past: 2 x 2 grid of projects, same columns as the other pages */
 .projects { padding: clamp(2rem, 5vw, 4.5rem) var(--gutter) clamp(3rem, 7vw, 6rem); }
 .projects h1 { margin-bottom: 0.9em; }
+/* Short intro above the cards, across the full width of the grid */
+.past-intro { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.past-intro p { margin: 0; }
+@media (max-width: 760px) { .past-intro { margin-bottom: 2rem; } }
 .project-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 4.5vw; row-gap: clamp(2.5rem, 5vw, 4.5rem); }
 .project-photo { aspect-ratio: 4 / 3; overflow: hidden; }
 .project h2 { font-size: clamp(1.4rem, 1rem + 1vw, 2rem); margin: 1rem 0 0; }
@@ -419,6 +423,12 @@ body.lb-open { overflow: hidden; }
 
 /* Mobile */
 @media (max-width: 760px) {
+  /* Slightly wider side margins on phones (about 20px instead of 15px on a typical phone) */
+  :root { --gutter: 5.4vw; }
+  /* Past page on phones: project title on the photo, white over a dark fade rising from the bottom */
+  .project a { position: relative; }
+  .project h2 { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 3.5rem 1rem 0.9rem; color: var(--white); background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0)); }
+
   .split { grid-template-columns: 1fr; row-gap: 2rem; }
   .split .media { aspect-ratio: 4 / 5; }
   .split .media, .split.media-right .media { order: 2; }   /* photos come after their text on phones */
@@ -436,8 +446,7 @@ body.lb-open { overflow: hidden; }
   /* Fixed banner height on phones, so opening the menu doesn't make the photo grow */
   .page-hero { min-height: 0; height: max(60vh, 28rem); }
 
-  /* 1. Left-aligned text on phones (justified text leaves big gaps on narrow screens) */
-  .justify p { text-align: left; hyphens: auto; -webkit-hyphens: auto; }
+  /* 1. Justified text on phones too, like desktop; hyphenation keeps the word gaps small */
 
   /* 2. Tighter spacing between sections */
   .section { padding-bottom: 3rem; }
@@ -446,7 +455,13 @@ body.lb-open { overflow: hidden; }
   .testimonies, .archive, .projects { padding-top: 2rem; padding-bottom: 3rem; }
   .testimony, .archive-group { padding: 1.75rem 0; }
   .project-grid { row-gap: 2.25rem; }
-  .site-footer { padding-top: 2.5rem; }
+  /* Space between page content and footer on phones: one even gap (~44px) on every page */
+  .site-footer { padding-top: 0; }
+  main, main.testimonies, main.archive, main.projects { padding-bottom: 2.75rem; }
+  main > :last-child:not(.contact-band) { padding-bottom: 0; }
+  /* Name left, email right on one line, as on desktop: smaller, scaled to the screen width */
+  .footer-top { flex-wrap: nowrap; gap: 0.75rem; font-size: min(0.95rem, 2.9vw); letter-spacing: -0.01em; }
+  .footer-top > * { white-space: nowrap; }
   .footer-bottom { margin-top: 2rem; }
   h1 + p, h2 + p { margin-top: 0; }
   h1, h2 { margin-bottom: 0.8em; }
@@ -467,10 +482,11 @@ body.lb-open { overflow: hidden; }
     font: inherit; font-size: 1.05rem; color: inherit; cursor: pointer;
     text-decoration: underline;
   }
-  .has-toggle .site-nav { display: none; width: 100%; flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  /* Open menu lines up on the right, under the Menu button */
+  .has-toggle .site-nav { display: none; width: 100%; flex-direction: column; align-items: flex-end; text-align: right; gap: 0.75rem; }
   .has-toggle.open .site-nav { display: flex; }
-  /* About submenu on phones: a plain list indented under "about", same colours as the menu */
-  .submenu { position: static; margin-top: 0.75rem; padding: 0 0 0 1.25rem; min-width: 0; background: none; color: inherit; gap: 0.75rem; }
+  /* About submenu on phones: a plain list under "about", indented from the right, same colours as the menu */
+  .submenu { position: static; margin-top: 0.75rem; padding: 0 1.25rem 0 0; min-width: 0; background: none; color: inherit; gap: 0.75rem; align-items: flex-end; }
 
   /* Home page on phones: the first photo becomes a full-width banner behind the header, like the other pages */
   .home-top { position: relative; height: max(60vh, 28rem); display: flex; flex-direction: column; background: var(--dark); color: var(--white); overflow: hidden; }
@@ -480,4 +496,6 @@ body.lb-open { overflow: hidden; }
   .home-top > .site-header { position: relative; z-index: 2; }
   .home-top .site-header a, .home-top .menu-toggle, .home-top .sub-toggle { color: var(--white); }
   .home-top + main > .split:first-child { padding-top: 2rem; }
+  /* Home: on phones show the lift photo whole, at its own 2:3 portrait shape */
+  .home-top + main > .split:first-child .media { aspect-ratio: 2 / 3; }
 }

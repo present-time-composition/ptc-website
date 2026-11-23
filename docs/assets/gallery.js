@@ -47,6 +47,13 @@
   document.addEventListener('keydown', function (e) {
     if (box.hidden) return;
     if (e.key === 'Escape') lbClose();
+    else if (e.key === 'Tab') { // keep keyboard focus inside the viewer
+      var btns = box.querySelectorAll('button');
+      var first = btns[0], last = btns[btns.length - 1];
+      if (!box.contains(document.activeElement)) { first.focus(); e.preventDefault(); }
+      else if (e.shiftKey && document.activeElement === first) { last.focus(); e.preventDefault(); }
+      else if (!e.shiftKey && document.activeElement === last) { first.focus(); e.preventDefault(); }
+    }
     else if (e.key === 'ArrowLeft') lbStep(-1);
     else if (e.key === 'ArrowRight') lbStep(1);
   });
