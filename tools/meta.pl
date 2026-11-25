@@ -5,7 +5,7 @@
 use strict; use warnings; use utf8;
 binmode STDOUT, ':utf8';
 
-my $BASE = 'https://present-time-composition.github.io/ptc-website/';
+my $BASE = 'https://present-time-composition.eu/';
 
 my %pages = (
   ''                                    => ['home',         'Present-Time Composition (PTC) is a method of improvisation developed by Alan Bern. By attending closely to inner impulses, improvisers learn to act in the moment together, creating meaningful musical content and form.'],

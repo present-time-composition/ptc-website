@@ -1,8 +1,7 @@
 # present-time composition (PTC) website
 
 Static website published with GitHub Pages from the `docs/` folder,
-currently at https://present-time-composition.github.io/ptc-website/
-(moving to https://present-time-composition.eu later, see below).
+at https://present-time-composition.eu (domain and email at all-inkl, KAS account w0145429).
 
 - Pages: `docs/*/index.html`
 - Design: `docs/assets/style.css`
@@ -28,8 +27,12 @@ To publish it again:
 2. Put the `deep-dive` link back into the about menu on every page (after "testimonies").
 3. Remove the `#` in front of the deep-dive line in `tools/meta.pl` and run it.
 
-## Moving to present-time-composition.eu
+## Domain setup (present-time-composition.eu)
 
-1. Put `present-time-composition.eu` back into `docs/CNAME`.
-2. In `tools/meta.pl` set `$BASE` to `https://present-time-composition.eu/` and run it.
-3. Commit, push, then tick "Enforce HTTPS" in GitHub → Settings → Pages.
+- `docs/CNAME` tells GitHub Pages the site's address; `$BASE` in `tools/meta.pl` is used
+  for the share links.
+- DNS in KAS → Tools → DNS-Einstellungen: four A records for the domain itself
+  (185.199.108.153, .109.153, .110.153, .111.153) and `www` as a CNAME to
+  `present-time-composition.github.io`. The MX and SPF (TXT) records stay at all-inkl,
+  so email keeps working.
+- "Enforce HTTPS" is ticked in GitHub → Settings → Pages.
