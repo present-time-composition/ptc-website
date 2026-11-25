@@ -150,7 +150,9 @@ p { margin: 0 0 1em; }
   cursor: pointer;
 }
 .button:hover { background: var(--dark); }
-.button-row { text-align: center; margin-top: 2.5rem; }
+.button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 2.5rem; }
+/* Home: two smaller buttons side by side */
+.button-row .button { font-size: 0.875rem; padding: 1em 2.2em; }
 .button-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
 .button-group .button { flex: 1 1 0; min-width: 9.5rem; text-align: center; padding-left: 1.5em; padding-right: 1.5em; }
 
@@ -397,7 +399,10 @@ body.lb-open { overflow: hidden; }
 .form-note { grid-column: 1 / -1; font-size: 0.875rem; margin: 0; min-height: 1.3em; }
 
 /* Footer */
-.site-footer { padding: clamp(2.5rem, 5vw, 4rem) var(--gutter) 1.75rem; }
+.site-footer { padding: 0 var(--gutter) 1.75rem; }
+/* Space between page content and footer: one even gap on every page (~80px on a laptop) */
+main, main.testimonies, main.archive, main.projects { padding-bottom: clamp(2.75rem, 5.5vw, 5rem); }
+main > :last-child:not(.contact-band) { padding-bottom: 0; }
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -455,10 +460,8 @@ body.lb-open { overflow: hidden; }
   .testimonies, .archive, .projects { padding-top: 2rem; padding-bottom: 3rem; }
   .testimony, .archive-group { padding: 1.75rem 0; }
   .project-grid { row-gap: 2.25rem; }
-  /* Space between page content and footer on phones: one even gap (~44px) on every page */
-  .site-footer { padding-top: 0; }
+  /* Space between page content and footer on phones (~44px) */
   main, main.testimonies, main.archive, main.projects { padding-bottom: 2.75rem; }
-  main > :last-child:not(.contact-band) { padding-bottom: 0; }
   /* Name left, email right on one line, as on desktop: smaller, scaled to the screen width */
   .footer-top { flex-wrap: nowrap; gap: 0.75rem; font-size: min(0.95rem, 2.9vw); letter-spacing: -0.01em; }
   .footer-top > * { white-space: nowrap; }
@@ -472,6 +475,8 @@ body.lb-open { overflow: hidden; }
   .contact-band .intro { padding-right: 0; }
   .contact-form { grid-template-columns: 1fr; }
   .split .text { padding-right: 0; }
+  /* Home buttons side by side on phones: narrower side padding so both fit on one line */
+  .button-row .button { padding-left: 1.6em; padding-right: 1.6em; }
   .hero-image { aspect-ratio: 4 / 3; }
   .site-header { flex-wrap: wrap; }
   .site-nav { gap: 0.5rem 1.25rem; }
