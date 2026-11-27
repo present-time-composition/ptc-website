@@ -324,6 +324,8 @@ p { margin: 0 0 1em; }
 .legal .text h3 .lang-en { font-size: 0.85em; }
 .legal .text p.en + p:not(.en), .legal .text ul.en + p:not(.en) { margin-top: 1.4em; }
 .legal .stand { color: #6b6b67; }
+/* Link between the German Datenschutz page and its English translation (/privacy/) */
+.legal .lang-switch { margin: -0.5rem 0 clamp(1.5rem, 3vw, 2.5rem); color: #6b6b67; font-size: 0.95rem; }
 .legal .seal { margin-top: 2rem; font-size: 0.85rem; color: #6b6b67; }
 /* Details still missing: clearly marked so they're not published by accident */
 .placeholder { background: #fff3c4; outline: 1px dashed #b8a24a; padding: 0 0.3em; }

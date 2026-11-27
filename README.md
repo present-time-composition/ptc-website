@@ -33,8 +33,11 @@ To publish it again:
   `docs/impressum/` only forwards there. Our own Impressum draft is kept locally in
   `unpublished/impressum/`; to use it again, move it back into `docs/`, point the footer links
   back to `impressum/` and remove the `#` in front of its line in `tools/meta.pl`.
-- **Datenschutz:** our own page, `docs/datenschutz/` (GitHub hosting, Web3Forms contact form,
-  Tally application form, Vimeo/YouTube). Not yet checked by a lawyer.
+- **Datenschutz:** our own page, `docs/datenschutz/` (German, legally binding), based on
+  Datenschutz-Generator.de and marked "Vom Websiteinhaber angepasst" above their link, as their
+  FAQ requires. The English translation is `docs/privacy/`; when one changes, change the other.
+  Footer "Datenschutz" links go to the German page; the English-language links (contact form,
+  video notes) go to `privacy/`.
 
 ## Domain setup (present-time-composition.eu)
 

@@ -23,6 +23,7 @@ my %pages = (
   'future/ptc-erasmus-youth-exchange-2027/' => ['erasmus-2027', 'PTC Erasmus+ Youth Exchange, 18–28 February 2027 at The Other Music Academy in Weimar: ten days of improvisation and movement for musicians and vocalists aged 18–30 from Germany, Austria and Finland.'],
   # 'impressum/'                          => ['home',         'Impressum / legal notice for the present-time composition website.'],
   'datenschutz/'                        => ['home',         'Datenschutzerklärung / privacy policy for the present-time composition website.'],
+  'privacy/'                            => ['home',         'Privacy policy (English translation of the Datenschutzerklärung) for the present-time composition website.'],
 );
 
 sub esc { my $s = shift; $s =~ s/&/&amp;/g; $s =~ s/"/&quot;/g; $s =~ s/</&lt;/g; return $s; }
