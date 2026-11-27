@@ -27,6 +27,15 @@ To publish it again:
 2. Put the `deep-dive` link back into the about menu on every page (after "testimonies").
 3. Remove the `#` in front of the deep-dive line in `tools/meta.pl` and run it.
 
+## Impressum and Datenschutz
+
+- **Impressum:** every "Impressum" link goes to OMA's page, https://othermusicacademy.eu/kontakt/.
+  `docs/impressum/` only forwards there. Our own Impressum draft is kept locally in
+  `unpublished/impressum/`; to use it again, move it back into `docs/`, point the footer links
+  back to `impressum/` and remove the `#` in front of its line in `tools/meta.pl`.
+- **Datenschutz:** our own page, `docs/datenschutz/` (GitHub hosting, Web3Forms contact form,
+  Tally application form, Vimeo/YouTube). Not yet checked by a lawyer.
+
 ## Domain setup (present-time-composition.eu)
 
 - `docs/CNAME` tells GitHub Pages the site's address; `$BASE` in `tools/meta.pl` is used

@@ -316,6 +316,15 @@ p { margin: 0 0 1em; }
 .legal h1 .lang-en { display: inline; font-size: 0.55em; }
 .legal .text p.en { color: #6b6b67; font-size: 0.925rem; }
 .legal .text a { text-underline-offset: 0.15em; }
+/* Datenschutz: lists and sub-headings; English versions grey like the English paragraphs */
+.legal .text ul { padding-left: 1.2rem; margin: 0.6em 0 1em; }
+.legal .text li { margin: 0.35em 0; overflow-wrap: anywhere; }
+.legal .text ul.en { color: #6b6b67; font-size: 0.925rem; }
+.legal .text h3 { font-size: 1.05rem; margin: 1.6em 0 0.5em; }
+.legal .text h3 .lang-en { font-size: 0.85em; }
+.legal .text p.en + p:not(.en), .legal .text ul.en + p:not(.en) { margin-top: 1.4em; }
+.legal .stand { color: #6b6b67; }
+.legal .seal { margin-top: 2rem; font-size: 0.85rem; color: #6b6b67; }
 /* Details still missing: clearly marked so they're not published by accident */
 .placeholder { background: #fff3c4; outline: 1px dashed #b8a24a; padding: 0 0.3em; }
 

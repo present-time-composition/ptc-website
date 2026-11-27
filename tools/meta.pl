@@ -21,7 +21,7 @@ my %pages = (
   'past/ptc-music-advanced-lab/'        => ['advanced-lab', 'PTC Music Advanced Lab, a research workshop in Berlin, April 2017: photos and workshop clips.'],
   'future/'                             => ['future',       'Upcoming Present-Time Composition (PTC) events and workshops.'],
   'future/ptc-erasmus-youth-exchange-2027/' => ['erasmus-2027', 'PTC Erasmus+ Youth Exchange, 18–28 February 2027 at The Other Music Academy in Weimar: ten days of improvisation and movement for musicians and vocalists aged 18–30 from Germany, Austria and Finland.'],
-  'impressum/'                          => ['home',         'Impressum / legal notice for the present-time composition website.'],
+  # 'impressum/'                          => ['home',         'Impressum / legal notice for the present-time composition website.'],
   'datenschutz/'                        => ['home',         'Datenschutzerklärung / privacy policy for the present-time composition website.'],
 );
 
